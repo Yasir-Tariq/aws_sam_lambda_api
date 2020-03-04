@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Creating serverless application model.
+Globals:
+  Function:
+    Timeout: 3
+Resources:
+  TestFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: sam_lambda
+      Handler: app.handler
+      Runtime: nodejs12.x
+      AutoPublishAlias: production #added new
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: get
+      DeploymentPreference:
+        Type: Canary10Percent10Minutes #added new
+      CodeUri: s3://yasirassigns3bucketneww/9f52863310410d357ea69e9aca14cbdc
