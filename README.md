@@ -17,8 +17,11 @@ Following pre requisites are necessary for proper understanding:
 This repository consists of following files:
 
 1.app.js: contains JSON body for the application response/request.
+
 2.package.json: contains packages and their dependencies for the application.
+
 3.lambda.yaml: a Cloudformation template for serverless resource (lambda function).
+
 4.sam-template: a Cloudformation template created after building the project using aws sam.
 
 
