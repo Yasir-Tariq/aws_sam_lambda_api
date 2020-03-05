@@ -19,7 +19,7 @@ exports.handler = (event, context, callback) => {
   // TODO implement
   const response = {
       statusCode: 200,
-      body: JSON.stringify('Welcome to Eurus Technologies!')
+      body: JSON.stringify('Updated lambda function!!!!!!!!!!!')
   };
   callback(null, response);
 };
