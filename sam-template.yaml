@@ -21,9 +21,9 @@ Parameters:
     Description: Please specify the deployment type.
     Type: String
     Default: Canary10Percent10Minutes
-    AllowedValues: 
-      - Canary10Percent10Minutes
-      - AllAtOnce
+    AllowedValues:
+    - Canary10Percent10Minutes
+    - AllAtOnce
 Resources:
   ApigatewayApi:
     Type: AWS::Serverless::Api
@@ -32,10 +32,11 @@ Resources:
   TestFunction1:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Ref LambdaName1
+      FunctionName:
+        Ref: LambdaName1
       Handler: app.handler
       Runtime: nodejs12.x
-      AutoPublishAlias: production  #added new
+      AutoPublishAlias: production
       Events:
         HelloWorld:
           Type: Api
@@ -45,14 +46,16 @@ Resources:
             RestApiId:
               Ref: ApigatewayApi
       DeploymentPreference:
-       Type: Canary10Percent10Minutes #added new
+        Type: Canary10Percent10Minutes
+      CodeUri: s3://yasirassigns3bucketneww/2bf95cd3624c2fdb713cf46ced703841
   TestFunction2:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Ref LambdaName2
+      FunctionName:
+        Ref: LambdaName2
       Handler: index.handler
       Runtime: nodejs12.x
-      AutoPublishAlias: test  #added new
+      AutoPublishAlias: test
       Events:
         HelloWorld:
           Type: Api
@@ -62,4 +65,6 @@ Resources:
             RestApiId:
               Ref: ApigatewayApi
       DeploymentPreference:
-       Type: !Ref DeploymentType #added new
+        Type:
+          Ref: DeploymentType
+      CodeUri: s3://yasirassigns3bucketneww/2bf95cd3624c2fdb713cf46ced703841
